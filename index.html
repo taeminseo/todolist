@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODOLIST</title>
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+    <section class="sidebar">
+        <div class="inner">
+            <div class="greeting_cover">
+                <form class="js_form form">
+                    <input type="text" placeholder="YOUR NAME" size="9"/>
+                </form>
+                <h4 class="js_greetings greetings"></h4>
+            </div>
+            
+        </div>
+    </section>
+    <div class="nav">
+        <div class="todo_list">
+            <p class="state"><span>●</span>  going | <span class="yellow">●</span> finished</p>
+            <h3>TODO LIST</h3>
+            <ul class="js_todoList">
+                
+            </ul>
+            <form class="js_todoForm">
+                <input type="text" placeholder="Write down your list" />
+            </form>
+        </div>
+        <div class="calender_sec">
+            <table class="calender" id="cal_0">
+                <colgroup>
+                    <col width="14%"/>
+                    <col width="14%"/>
+                    <col width="14%"/>
+                    <col width="14%"/>
+                    <col width="14%"/>
+                    <col width="14%"/>
+                    <col width="14%"/>
+                </colgroup>
+            </table>
+        </div>
+        <div class="time-sec">
+            <div class="js_clock">
+                <h1 class="js_time">00:00</h1>
+            </div>
+            <span class="js_weather"></span>
+        </div>
+    </div>
+    
+    <script src="js/index.js"></script>
+    <script src="js/clock.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/greeting.js"></script>
+    <script src="js/calender.js"></script>
+    <script src="js/todo.js"></script>
+    
+    <script>
+        (function(){
+            let today = new Date();
+            let year = today.getFullYear();
+            let month = today.getMonth();
+            let date = today.getDate();
+            let calendar = new Calendar(new Date(year, month, date), "cal_" + 0);
+            calendar.build();
+            
+            let todayCell = document.querySelector('td[data-date="' + [year, month, date].join('-') + '"]');
+            todayCell.classList.add('today');
+        })();
+    </script>
+</body>
+</html>
